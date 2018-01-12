@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+	    <title></title>
+		<link rel="stylesheet" href="css/font-awesome.css" />
+        <style type="text/css">
+			html{
+				font-family: "微软雅黑";
+				font-size: 100px;
+				/* 比如：我们设计稿的宽度是750px
+				 * calc()计算 
+				 * 100vw:屏幕100%宽；
+				 * 求：1rem = 100px
+				 */
+				font-size: calc(100vw/7.5);
+				margin: 0;
+				padding: 0;
+			}
+			header{
+				width: 100%;
+				height: 0.9rem;
+				background-color: #f9f9f9;
+				font-size: 0.34rem;
+				line-height: 0.9rem;
+				color: black;
+				text-align: center;
+				border-bottom: 2px solid #a9a9a9;
+			}
+			main label{
+				font-size: 0.25rem;
+				display: block;
+				font-weight: bold;
+				width: 90%;
+				height: 1.04rem;
+				line-height: 1.04rem;
+				margin-left: 5%;
+				border-bottom: 1px solid #D4D4D4;
+			}
+			main label input{
+				border: 0;
+				font-size: 0.25rem;
+				margin-left: 0.5rem;
+				text-indent: 0.1rem;
+				padding: 0.1rem;
+			}
+			main button{
+				width: 90%;
+				height: 1.04rem;
+				line-height: 1.04rem;
+				margin-left: 5%;
+				font-size: 0.25rem;
+				background-color: #eee;
+				border: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div>京东登陆</div>
+		</header>
+		<main>
+			<form action="" method="post">
+				<label for="user">用户名<input type="text" name="" id="username" value="" placeholder="用户名/邮箱/已验证手机"/></label>
+				<label for="pass">密码<input type="password" name="" id="passw" value="" placeholder="请输入密码"/></label>
+				<label for="yanz">验证码<input type="text" name="" id="yanzm" value="" placeholder="请输入验证码"/></label>
+				<button>登录</button>
+			</form>
+		</main>
+	</body>
+</html>

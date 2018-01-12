@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="css/font-awesome.css" />
+        <style type="text/css">
+			html{
+				font-family: "微软雅黑";
+				font-size: 100px;
+				/* 比如：我们设计稿的宽度是750px
+				 * calc()计算 
+				 * 100vw:屏幕100%宽；
+				 * 求：1rem = 100px
+				 */
+				font-size: calc(100vw/7.5);
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			header{
+				width: 100%;
+				height: 0.9rem;
+				background-image: linear-gradient(to top,#f2f2f2,#fff);
+				position: relative;
+			}
+			header div,header input{
+				position: absolute;
+			}
+			header div.fa-angle-left{
+				font-size:0.6rem;
+				color: #999;
+				top: 0.15rem;
+				left: 0.25rem;
+			}
+			header input{
+				height: 0.6rem;
+				width: 5.8rem;
+				border-radius: 0.5rem;
+				border: 1px solid #D4D4D4;
+				text-indent: 0.7rem;
+				top: 0.14rem;
+				left: 0.75rem;
+			}
+			header div.fa-align-left{
+				font-size:0.36rem;
+				line-height: 0.9rem;
+				color: #999;
+				margin-left: 0.25rem;
+				top: 0.25rem;
+				right:0.25rem;
+			}
+			header div.fa-search{
+				font-size:0.36rem;
+				line-height: 0.9rem;
+				color: #999;
+				margin-left: 0.25rem;
+				top: 0.05rem;
+				left:0.8rem;
+				z-index: 77;
+			}
+			section{
+				width: 100%;
+				height: auto;
+				position: fixed;
+				top: 0.9rem;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				font-size: 0.2rem;
+				list-style: none;
+				text-align: center;
+			}
+			aside{
+				height: 100%;
+				width: 1.5rem;
+				text-align: center;
+				position: relative;
+				overflow: hidden;
+				border-right: 1px #CECECE solid;
+			}
+			aside ul{
+				list-style: none;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+			}
+			aside ul li{
+				line-height: 0.9rem;
+				border-bottom: 1px solid #D4D4D4;
+			}
+			aside ul li a{
+				text-decoration: none;
+				color: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="fa fa-angle-left"></div>
+			<div class="fa fa-search"></div>
+			<input type="text" name="search" id="search" value="" placeholder="APP下拉领红包呦！余诗曼与您不见不散"/>
+			<div class="fa fa-align-left"></div>
+		</header>
+		<section>
+			<aside>
+				<ul>
+					<li><a href="#">热门推荐</a></li>
+					<li><a href="#">京东超市</a></li>
+					<li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li>
+					<li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li><li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li><li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li><li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li><li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li><li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+					<li><a href="#">电器</a></li><li><a href="#">男装</a></li>
+					<li><a href="#">女装</a></li>
+					<li><a href="#">母婴</a></li>
+				</ul>
+			</aside>
+			<main></main>
+		</section>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			var offsetTop = 0 ;
+			var startY = 0;
+			/// 触摸事件添加到侧边栏上
+			var aside = document.querySelector("aside");
+			var ul = document.querySelector("aside ul");
+			// 最小的上偏移
+			var mintop = (150-aside.clientHeight + ul.clientHeight)*-1;
+			
+			
+			aside.addEventListener("touchstart",function(e){
+				var x = e.targetTouches[0].clientX;
+				startY = e.targetTouches[0].clientY;
+				//console.log(x,y);
+			});
+			
+			
+			aside.addEventListener("touchmove",function(e){
+				var x = e.targetTouches[0].clientX;
+				var y = e.targetTouches[0].clientY;
+				
+				var tmp = offsetTop+y-startY;
+				// 下拉限制
+				tmp = tmp>150?150:tmp;
+				// 上拉限制
+				tmp = tmp<mintop?mintop:tmp;
+				ul.style.top = tmp+"px";
+			});
+			
+			
+			aside.addEventListener("touchend",function(e){
+				var x = e.changedTouches[0].clientX;
+				var y = e.changedTouches[0].clientY;
+				offsetTop = offsetTop+y-startY;
+				
+				// 限制下拉
+				if(offsetTop>0){
+					offsetTop = 0;
+				}
+				
+				// 限制上拉
+				if(offsetTop<mintop){
+					offsetTop = mintop+150;
+				}
+				
+				// 回到指定位置
+				$(ul).animate({top:offsetTop+'px'},300)
+				
+				startY = y;
+			});
+		</script>
+	</body>
+</html>
