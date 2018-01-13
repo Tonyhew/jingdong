@@ -115,21 +115,29 @@
 				margin-left: 0.45rem;
 			}
 			.recomd{
-				font-size: 20px;
-				margin: 0;
-				padding: 0;
+				font-size: 15px;
+				margin: 2px;
+				padding: 5px;
 			}
 			.recomd ul{
 				width: ;
+				background-color: #FFFFFF;
+				
 			}
 			.recomd ul li{
 				display: inline-block;
-				font-size: 18px;
+				padding: 5px;
+				
+			}
+			.recomd ul li span{
+				font-size: 16px;
+				color: black;
+				padding: 5px;
 			}
 			.recomd ul li img{
 				display: block;
-				width: 90px;
-				margin-left: -10px;
+				width: 50px;
+				margin-left: 5px;
 			}
 		</style>
 		
@@ -195,7 +203,34 @@
 										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
 									</ul>
 								</div>
-								
+								<div class="recomd">
+									<h4>T桖</h4>
+									<ul>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+									</ul>
+								</div>
+								<div class="recomd">
+									<h4>羽绒服</h4>
+									<ul>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+										<li><a href="#"><img src="img/cloth(10).png"/><span>新品T恤</span></a></li>
+									</ul>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -205,12 +240,15 @@
 		
 		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
 		<script type="text/javascript">
+			
 			var offsetTop = 0;
 			var startY = 0;
 			var aside = document.querySelector("aside");
 			var ul = document.querySelector("aside ul");
-			
+			var main = document.querySelector(".brachlist");
+			var kil = document.querySelector(".brachlist .recomd")
 			var minTop = (150-aside.clientHeight + ul.clientHeight)*-1;
+			var miTop = (150-main.clientHeight + kil.clientHeight)*-1;
 			
 			aside.addEventListener("touchstart",function(e){
 				
@@ -252,6 +290,46 @@
 			aside.addEventListener("touchcancel",function(e){
 				console.log("cancel")
 			});
+			
+			main.addEventListener("touchstart",function(e){
+				
+				var x = e.targetTouches[0].clientX;
+				startY = e.targetTouches[0].clientY;
+				
+				
+			});
+			
+			main.addEventListener("touchmove",function(e){
+				
+				var x = e.targetTouches[0].clientX;
+				var y = e.targetTouches[0].clientY;
+				var tmp = offsetTop+y-startY;
+				//下拉限制
+				tmp = tmp>150?150:tmp;
+				//上拉限制
+				tmp = tmp<miTop?miTop:tmp;
+				kil.style.top = tmp+"px";
+				
+			});
+			main.addEventListener("touchend",function(e){
+				
+				var x = e.changedTouches[0].clientX;
+				var y = e.changedTouches[0].clientY;
+				offsetTop = offsetTop+y-startY;
+				
+				
+				if(offsetTop>0){
+					offsetTop = 0;
+				}
+				if(offsetTop<miTop){
+					offsetTop = miTop+150;
+				}
+				
+				$(kil).animate({top:offsetTop+'px'},300)
+				startY = y;
+			});
+			
+			
 		</script>
 		
 		
