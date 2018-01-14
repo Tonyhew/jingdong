@@ -210,7 +210,7 @@
 				var verify = document.querySelector("#yanzm");
 				var btn = document.querySelector("button");
 				
-				btn.onload = function(){
+				btn.ondatasetchanged = function(){
 					if(user.value==""||pass.value==""||verify.value==""){
 						btn.style.backgroundColor = "#eee";
 						btn.innerHTML = "登录";
