@@ -36,7 +36,7 @@
 			
 			header  img{
 				float: left;
-				margin-top: 15px;
+				margin-top: 8px;
 			}
 			main label{
 				font-size: 0.25rem;
@@ -56,11 +56,11 @@
 				padding: 0.1rem;
 			}
 			label span.fa{
-				padding-left: 100px;
-				font-size: 26px;
+				padding-left: 1.9rem;
+				font-size: 0.44rem;
 			}
 			label span{
-				padding-left: 55px;
+				padding-left: 0.65rem;
 				font-size: 14px;
 			}
 			
@@ -74,9 +74,7 @@
 				border: 0;
 				margin-top: 15px;
 			}
-			main button:hover{
-				background-color: orangered;
-			}
+			
 			.qq span{
 				border-bottom: 1px solid #D4D4D4;
 				width: 90%;
@@ -91,11 +89,30 @@
 				font-size: 16px;
 				text-decoration: none;
 			}
+			.check{
+				font-size: 0.3rem;
+			}
 			.check i{
+				
 				margin: 15px;
-				font-size: 14px;
-				margin-left: 5%;
-
+				font-size: 0.3rem;
+				margin-left: 6.5%;
+				display: inline-block;
+				float: left;
+			}
+			.check-1 i{
+				margin: 15px;
+				font-size: 0.3rem;
+				margin-left: 6.5%;
+				display: inline-block;
+				float: left;
+			}
+			.check-2 i{
+				margin: 15px;
+				font-size: 0.3rem;
+				margin-left: 6.5%;
+				display: inline-block;
+				float: left;
 			}
 			.qq{
 				font-size: 22px;
@@ -120,11 +137,17 @@
 				<label for="yanz">验证码<input type="text" name="" id="yanzm" value="" placeholder="请输入验证码"/><span>|&nbsp;&nbsp;MWNF</span></label>
 				<button>登录</button>
 			</form>
+			
 			<div class="check">
 					<i class="fa fa-check-circle">一个月免登录</i>
-					<i class="fa fa-lock">找回密码</i> 
-					<i class="fa fa-mobile-phone">快速注册</i> 
 			</div>
+			<div class="check-1">
+				<i class="fa fa-lock">找回密码</i> 
+			</div>
+			<div class="check-2">
+				<i class="fa fa-mobile-phone">快速注册</i> 
+			</div>
+			
 			<div class="qq">
 				<span>其他登录方式</span>
 				<i class="fa fa-qq">
@@ -138,8 +161,8 @@
 		
 		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
 		<script type="text/javascript">
-			var checked =true;
-				
+			window.onload = function(){
+				var checked =true;
 				$(".check").click(function(){
 					checked = !checked;
 					if(checked){
@@ -149,6 +172,15 @@
 					}
 					
 				});
+				
+				$(".check-1").click(function(){
+					checked = !checked;
+					if(checked){
+						$(this).children("i").addClass("fa-lock").removeClass("fa-unlock-alt");
+					}else{
+						$(this).children("i").removeClass("fa-lock").addClass("fa-unlock-alt");
+					}
+				})
 				
 				var eye = document.querySelector(".fa-eye-slash");
 				console.log(eye);
@@ -165,6 +197,25 @@
 					eye.style.opacity = 1;
 					}
 				}
+				var user = document.querySelector("#username");
+				var pass = document.querySelector("#passw");
+				var verify = document.querySelector("#yanzm");
+				var btn = document.querySelector("button");
+				
+				btn.onmouseover = function(){
+					if(user.value==""||pass.value==""||verify.value==""){
+						btn.style.backgroundColor = "#eee";
+						btn.innerHTML = "登录";
+					}else{
+						btn.style.backgroundColor = "orangered";
+						btn.innerHTML = "登录";
+					}
+				}
+				
+			}
+			
+				
+				
 				
 		</script>
 		

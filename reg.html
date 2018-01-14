@@ -58,11 +58,14 @@
 				background-color: #eee;
 				border: 0;
 			}
+			.userl span{
+				margin-left: -0.25rem;
+			}
 			select{
 				border: none;
 			}
 			label span.fa{
-				padding-left: 2.0rem;
+				padding-left: 1.8rem;
 				font-size: 22px;
 			}
 			main p{
@@ -78,12 +81,12 @@
 	<body>
 		<header>
 			<img src="img/angle.gif"/>
-			<div>京东登陆</div>
+			<div>京东注册</div>
 		</header>
 		<main>
 			<form action="" method="post">
-				<label for="yanz"><input type="text" size="45" name="" id="yanzm" value="" placeholder="请输入验证码"/>|MWNF	</label>
-				<label for="user">
+				<label for="yanz"><input type="text" size="45" name="" id="yanzm" value="" placeholder="请输入验证码"/><span>|MWNF</span></label>
+				<label for="user" class="userl">
 					<select name="area">
 						<option value="+">+0086</option>
 						<option value="+">+0086</option>
@@ -91,7 +94,9 @@
 						<option value="+">+0086</option>
 						<option value="+">+0086</option>
 					</select>
-					<input type="text" name="" id="username" value="" size="30" placeholder="请输入手机号"/>|&nbsp;&nbsp;&nbsp;&nbsp;获取验证码</label>
+					<input type="text" name="" id="username" value="" size="30" placeholder="请输入手机号"/>
+					<span>|&nbsp;&nbsp获取验证码</span>
+				</label>
 				
 				<label for="verify"><input type="text" name="" id="verif" value="" placeholder="请输入收到的验证码"/></label>
 				<label for="pass"><input type="password" size="30" name="" id="passw" value="" placeholder="请设置6-20位登录密码"/>&nbsp;&nbsp;<span class="fa fa-eye-slash" state="off"></span></label>
