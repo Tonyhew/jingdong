@@ -140,7 +140,7 @@
 		</header>
 		<main>
 			<form action="" method="post">
-				<label for="user">用户名<input type="text" name="" id="username" value="" placeholder="用户名/邮箱/已验证手机"/><span class="fa fa-close"></span></label>
+				<label for="user">用户名<input type="text" name="" id="username" value="" placeholder="用户名/邮箱/已验证手机"/><span class="fa fa-close" state="off"></span></label>
 				<label for="pass">密码<input type="password" name="" id="passw" value="" placeholder="请输入密码"/>&nbsp;&nbsp;<span class="fa fa-eye-slash" state="off"></span></label>
 				<label for="yanz">验证码<input type="text" name="" id="yanzm" value="" placeholder="请输入验证码"/><span>|&nbsp;&nbsp;MWNF</span></label>
 				<button>登录</button>
@@ -191,7 +191,6 @@
 				})
 				
 				var eye = document.querySelector(".fa-eye-slash");
-				console.log(eye);
 				var input = document.querySelector("#passw");
 				eye.onclick = function(){
 					var state = this.getAttribute("state");
@@ -220,6 +219,14 @@
 					}
 				}
 				
+				var close = document.querySelector(".fa-close");
+				var user = document.querySelector("#username");
+				close.onclick = function(){
+					
+					user.value = "";
+					
+				}
+			
 			}
 			
 				
